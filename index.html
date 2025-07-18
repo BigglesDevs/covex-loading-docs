@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Covex Loading Screen Docs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+    }
+    .sidebar {
+      width: 250px;
+      background: #111;
+      padding: 30px 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+      overflow-y: auto;
+      border-right: 1px solid #222;
+    }
+    .sidebar h2 {
+      font-size: 1.2rem;
+      color: #00c6ff;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      padding: 8px 0;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active-link {
+      color: #00c6ff;
+      font-weight: 600;
+    }
+    main {
+      margin-left: 250px;
+      padding: 40px;
+      max-width: 850px;
+      width: 100%;
+    }
+    header {
+      background: #111;
+      border-bottom: 1px solid #222;
+      padding: 16px 40px;
+      text-align: center;
+    }
+    header img {
+      max-width: 220px;
+    }
+    h1, h2 {
+      color: #00c6ff;
+    }
+    code {
+      background: #222;
+      color: #00c6ff;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #111;
+      border-left: 4px solid #00c6ff;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .tip-box {
+      background: #1b1b1b;
+      border-left: 5px solid #00c6ff;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Covex loading screen</h2>
+    <a href="#install">🔧 Installation</a>
+    <a href="#server-name">🏷️ Change Server Name</a>
+    <a href="#staff">👥 Edit Staff</a>
+    <a href="#music">🎵 Music Setup</a>
+    <a href="#rules">📜 Server Rules</a>
+    <a href="#social">🌐 Social Links</a>
+    <a href="#background">📺 Background Video</a>
+    <a href="#logo">🖼 Logo</a>
+    <a href="#structure">📁 File Structure</a>
+    <a href="#tips">💡 Dev Tips</a>
+  </div>
+
+  <main>
+    <header>
+      <img src="https://i.ibb.co/BKgMTVSr/covex-banner-transparent.png" alt="Covex Banner">
+    </header>
+
+    <h1>Covex Studios Loading Screen Documentation</h1>
+    <p>Welcome to the step-by-step guide for customizing the Covex FiveM loading screen.</p>
+
+    <section id="install">
+      <h2>🔧 Installation</h2>
+      <ol>
+        <li>Place the folder in your <code>resources</code> directory.</li>
+        <li>Add <code>start covex_loading</code> to your <code>server.cfg</code>.</li>
+        <li>Ensure your folder includes the files listed in <code>fxmanifest.lua</code>.</li>
+      </ol>
+    </section>
+
+    <section id="server-name">
+      <h2>🏷️ Change Server Name</h2>
+      <ol>
+        <li>Open <code>public/html/index.html</code>.</li>
+        <li>Press <code>CTRL + F</code> and search for <code>Covex Studios</code>.</li>
+        <li>Edit the line:
+          <pre><code>&lt;span&gt;Welcome to Covex Studios!&lt;/span&gt;</code></pre>
+        </li>
+        <li>Replace the paragraph below with your server description.</li>
+      </ol>
+    </section>
+
+    <section id="staff">
+      <h2>👥 Edit Staff</h2>
+      <ol>
+        <li>Open <code>script.js</code> and search for <code>staffList</code>.</li>
+        <li>Add staff using this format:
+<pre><code>{
+  name: \"John Doe\",
+  role: \"Admin\",
+  image: \"../../assets/staff/john.png\"
+},</code></pre>
+        </li>
+        <li>Place the image into <code>assets/staff/</code>.</li>
+        <li>Use square PNG/JPG images (e.g., 256x256).</li>
+      </ol>
+    </section>
+
+    <section id="music">
+      <h2>🎵 Music Setup</h2>
+      <ol>
+        <li>Open <code>script.js</code> and search <code>musicTracks</code>.</li>
+        <li>Use this format for new tracks:
+<pre><code>{
+  src: \"../../assets/music/song.mp3\",
+  title: \"Track Name\",
+  artist: \"Artist\",
+  image: \"../../assets/music_art/art.png\"
+},</code></pre>
+        </li>
+        <li>Place files in <code>assets/music/</code> and <code>assets/music_art/</code>.</li>
+      </ol>
+    </section>
+
+    <section id="rules">
+      <h2>📜 Server Rules</h2>
+      <ol>
+        <li>Open <code>script.js</code> and find <code>serverRules</code>.</li>
+        <li>Edit the rules like this:
+<pre><code>"No exploiting.",
+"Respect all players.",</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section id="social">
+      <h2>🌐 Social Links</h2>
+      <ol>
+        <li>Open <code>index.html</code> and search <code>discord.gg</code>.</li>
+        <li>Update the <code>href</code> attributes with your URLs.</li>
+      </ol>
+    </section>
+
+    <section id="background">
+      <h2>📺 Background Video</h2>
+      <ol>
+        <li>Replace <code>assets/background.mp4</code>.</li>
+        <li>Or update this line in <code>index.html</code>:
+<pre><code>&lt;source src=\"../../assets/YOUR_VIDEO.mp4\"&gt;</code></pre></li>
+      </ol>
+    </section>
+
+    <section id="logo">
+      <h2>🖼 Logo</h2>
+      <ol>
+        <li>Replace <code>assets/logo.png</code> with your logo.</li>
+        <li>Update path in <code>index.html</code> if needed.</li>
+      </ol>
+    </section>
+
+    <section id="structure">
+      <h2>📁 File Structure</h2>
+<pre>
+/assets/
+├── background.mp4
+├── logo.png
+├── staff/
+├── music/
+└── music_art/
+public/html/
+├── index.html
+├── style.css
+└── script.js
+fxmanifest.lua
+README.md
+</pre>
+    </section>
+
+    <section id="tips">
+      <h2>💡 Dev Tips</h2>
+      <div class="tip-box">
+        <ul>
+          <li>Use <code>CTRL + F</code> to find config sections quickly.</li>
+          <li>Search for <code>Covex</code>, <code>staffList</code>, <code>musicTracks</code>, or <code>serverRules</code>.</li>
+          <li>Restart your server or refresh to apply changes.</li>
+          <li>Always verify asset paths are correct.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const links = document.querySelectorAll('.sidebar a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector(`.sidebar a[href=\"#${id}\"]`);
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active-link'));
+          if (link) link.classList.add('active-link');
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('section[id]').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
